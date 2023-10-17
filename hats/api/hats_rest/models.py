@@ -1,3 +1,8 @@
 from django.db import models
 
-# Create your models here.
+
+class Hat(models.Model):
+    brand = models.CharField(max_length=150)
+    style = models.CharField(max_length=150)
+    color = models.CharField(max_length=150)
+    size = models.SmallIntegerField()

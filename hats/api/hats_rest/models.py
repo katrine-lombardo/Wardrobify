@@ -1,5 +1,4 @@
 from django.db import models
-from django.urls import reverse
 
 
 class LocationVO(models.Model):
@@ -7,6 +6,7 @@ class LocationVO(models.Model):
     closet_name = models.CharField(max_length=100)
     section_number = models.PositiveSmallIntegerField()
     shelf_number = models.PositiveSmallIntegerField()
+
 
 
 class Hat(models.Model):

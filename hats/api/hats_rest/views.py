@@ -21,4 +21,4 @@ class HatDetailEncoder(ModelEncoder):
     ]
 
 
-def api_list_hats(request, pk)
+# def api_list_hats(request, pk)

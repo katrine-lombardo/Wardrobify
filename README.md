@@ -2,8 +2,8 @@
 
 Team:
 
-* Person 1 - Which microservice?
-* Person 2 - Seth Porche - Hats
+* Katrine Lombardo - Shoes
+* Seth Porche - Hats
 
 ## Design
 

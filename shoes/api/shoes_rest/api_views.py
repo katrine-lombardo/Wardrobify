@@ -20,7 +20,12 @@ class BinVODetailEncoder(ModelEncoder):
 class ShoeListEncoder(ModelEncoder):
     model = Shoe
     properties = [
-        "model_name"
+        "id",
+        "manufacturer",
+        "picture_url",
+        "colour",
+        "model_name",
+        "bin"
         ]
 
     def get_extra_data(self, o):
@@ -30,6 +35,7 @@ class ShoeListEncoder(ModelEncoder):
 class ShoeDetailEncoder(ModelEncoder):
     model = Shoe
     properties = [
+        "id",
         "manufacturer",
         "picture_url",
         "colour",
@@ -51,7 +57,7 @@ def api_list_shoes(request, bin_vo_id=None):
             shoes = Shoe.objects.all()
         return JsonResponse(
             {"shoes": shoes},
-            encoder=ShoeListEncoder,
+            encoder=ShoeDetailEncoder,
         )
     else:
         content = json.loads(request.body)

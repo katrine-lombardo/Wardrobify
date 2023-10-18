@@ -12,6 +12,22 @@ function HatList() {
     }
   }
 
+
+  async function handleClick(e) {
+    const request = await fetch(`http://localhost:8090/api/hats/${e.target.id}`, {
+    method: "DELETE",
+    });
+
+    const resp = await request.json();
+
+    if (resp.deleted) {
+      alert("Deleted Item");
+      fetchData();
+    } else {
+      alert("Could Not Delete Item");
+    }
+  }
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -27,6 +43,7 @@ function HatList() {
           <tr>
             <th>Style</th>
             <th>Color</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -35,6 +52,7 @@ function HatList() {
               <tr key={hat.id}>
                 <td>{ hat.style }</td>
                 <td>{ hat.color }</td>
+                <td><button onClick={handleClick} id={hat.id} className="btn btn-danger">Delete</button></td>
               </tr>
             );
           })}

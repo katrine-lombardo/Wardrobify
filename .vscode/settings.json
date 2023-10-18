@@ -7,3 +7,8 @@
 >>>>>>> 68acfa0026f74f681a257be416abddb9214b8965
     ]
 }
+{
+    "python.analysis.extraPaths": [
+        "./shoes/api"
+    ]
+}

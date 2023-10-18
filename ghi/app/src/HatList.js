@@ -13,8 +13,8 @@ function HatList() {
   }
 
 
-  async function handleClick(e) {
-    const request = await fetch(`http://localhost:8090/api/hats/${e.target.id}`, {
+  async function handleClick(e, hatId) {
+    const request = await fetch(`http://localhost:8090/api/hats/${hatId}`, {
     method: "DELETE",
     });
 
@@ -43,6 +43,8 @@ function HatList() {
           <tr>
             <th>Style</th>
             <th>Color</th>
+            <th>Image</th>
+            <th>Location</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -52,7 +54,11 @@ function HatList() {
               <tr key={hat.id}>
                 <td>{ hat.style }</td>
                 <td>{ hat.color }</td>
-                <td><button onClick={handleClick} id={hat.id} className="btn btn-danger">Delete</button></td>
+                <td>
+                    <img src={ hat.picture_url } className="img-thumbnail" style={{height:"50px", width:"50px"}}/>
+                </td>
+                <td>{ hat.location }</td>
+                <td><button onClick={(e) => handleClick(e, hat.id)} id={hat.id} className="btn btn-danger">Delete</button></td>
               </tr>
             );
           })}

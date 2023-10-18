@@ -22,6 +22,7 @@ class HatListEncoder(ModelEncoder):
                   "color",
                   "fabric",
                   "location",
+                  "picture_url",
                   "id"]
 
     def get_extra_data(self, o):

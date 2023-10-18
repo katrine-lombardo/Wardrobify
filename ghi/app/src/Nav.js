@@ -17,13 +17,13 @@ function Nav() {
               <NavLink className="nav-link" to="/shoes/">Shoes</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/shoes/new">Add a shoe</NavLink>
+              <NavLink className="nav-link" to="/shoes/new">Add a Shoe</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/hats">Hats</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="hats/new">Add A Hat</NavLink>
+              <NavLink className="nav-link" to="hats/new">Add a Hat</NavLink>
             </li>
           </ul>
         </div>

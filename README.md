@@ -3,7 +3,7 @@
 Team:
 
 * Katrine Lombardo - Shoes
-* Person 2 - Which microservice?
+* Seth Porche - Hats
 
 ## Design
 

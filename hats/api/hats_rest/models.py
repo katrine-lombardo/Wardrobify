@@ -8,12 +8,11 @@ class LocationVO(models.Model):
     shelf_number = models.PositiveSmallIntegerField()
 
 
-
 class Hat(models.Model):
-    brand = models.CharField(max_length=150)
+    fabric = models.CharField(max_length=150)
     style = models.CharField(max_length=150)
     color = models.CharField(max_length=150)
-    size = models.PositiveSmallIntegerField(primary_key=True)
+    picture_url = models.URLField(null=True)
     location = models.ForeignKey(
         LocationVO,
         related_name="hats",

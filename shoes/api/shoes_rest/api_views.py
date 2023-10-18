@@ -72,3 +72,11 @@ def api_list_shoes(request, bin_vo_id=None):
             encoder=ShoeDetailEncoder,
             safe=False,
         )
+
+def api_show_shoe(request, pk):
+    shoe = Shoe.objects.get(id=pk)
+    return JsonResponse(
+        shoe,
+        encoder=ShoeDetailEncoder,
+        safe=False,
+    )

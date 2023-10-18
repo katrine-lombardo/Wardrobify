@@ -40,6 +40,7 @@ class ShoeDetailEncoder(ModelEncoder):
         "bin": BinVODetailEncoder(),
     }
 
+
 @require_http_methods(["GET", "POST"])
 def api_list_shoes(request, bin_vo_id=None):
     if request.method == "GET":

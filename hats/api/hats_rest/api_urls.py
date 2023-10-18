@@ -1,4 +1,4 @@
-from django.urls import path
+wdfrom django.urls import path
 
 from hats_rest.api_views import (
     api_list_hats)

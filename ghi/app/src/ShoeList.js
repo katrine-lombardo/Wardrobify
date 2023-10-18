@@ -10,6 +10,22 @@ function ShoeList() {
       setShoes(data.shoes);
     }
   };
+
+  async function handleClick(e, shoeId) {
+    const response = await fetch(
+      `http://localhost:8080/api/shoes/${e.shoeId}`,
+      {
+        method: "DELETE",
+      }
+    );
+    if (response.ok) {
+      alert("Delete Item");
+      fetchData();
+    } else {
+      alert("Could Not Delete Item");
+    }
+  }
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -18,28 +34,6 @@ function ShoeList() {
     return <div>Loading shoes...</div>;
   }
 
-  async function loadData() {
-    const request = await fetch("http://localhost:8080/api/shoes/");
-    const resp = await request.json();
-
-    setShoes(resp.Shoes);
-  }
-
-  async function handleClick(e) {
-    const id = e.target.id;
-    const request = await fetch("http://localhost:8080/api/shoes/", {
-      method: "DELETE",
-    });
-
-    const resp = await request.json();
-    console.log(e.target);
-
-    if (resp.delete) {
-      alert("Delete Item");
-    } else {
-      alert("Could Not Delete Item");
-    }
-  }
   return (
     <table className="table table-striped">
       <thead>
@@ -52,14 +46,27 @@ function ShoeList() {
         </tr>
       </thead>
       <tbody>
-        {shoes.map(shoe => {
+        {shoes.map((shoe, index) => {
           return (
-            <tr key={shoe.id}>
-              <td>{ shoe.picture_url }</td>
-              <td>{ shoe.id }</td>
-              <td>{ shoe.model_name }</td>
-              <td>{ shoe.bin }</td>
-              <td><button onClick={handleClick} id={shoe.id} className="btn btn-danger">Delete</button></td>
+            <tr key={index}>
+              <td>
+                <img
+                  src={shoe.picture_url}
+                  className="img-thumbnail"
+                  style={{ height: "70px", width: "70px" }}
+                />
+              </td>
+              <td>{shoe.id}</td>
+              <td>{shoe.model_name}</td>
+              <td>{shoe.bin.closet_name}</td>
+              <td>
+                <button
+                  onClick={(e) => handleClick(e, shoe.id)}
+                  className="btn btn-danger"
+                >
+                  Delete
+                </button>
+              </td>
             </tr>
           );
         })}

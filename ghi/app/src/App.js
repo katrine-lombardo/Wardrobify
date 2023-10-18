@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './MainPage';
 import Nav from './Nav';
 import ShoeForm from './ShoeForm';
+import ShoeList from './ShoeList';
 
 function App() {
   return (
@@ -9,8 +10,11 @@ function App() {
       <Nav />
       <div className="container">
         <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="shoes" element={<ShoeForm />} />
+          <Route index element={<MainPage />} />
+          <Route path="shoes">
+            <Route path="new" element={<ShoeForm />} />
+            <Route path="" element={<ShoeList />} />
+          </Route>
         </Routes>
       </div>
     </BrowserRouter>

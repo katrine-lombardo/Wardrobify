@@ -46,7 +46,6 @@ class HatDetailEncoder(ModelEncoder):
 @require_http_methods(["GET", "POST"])
 def api_list_hats(request, location_vo_id=None):
     if request.method == "GET":
-        hats = Hat.objects.filter(location=location_vo_id)
         if location_vo_id is not None:
             hats = Hat.objects.filter(location=location_vo_id)
         else:
@@ -59,9 +58,9 @@ def api_list_hats(request, location_vo_id=None):
         content = json.loads(request.body)
 
         try:
-            location_href = content["location"]
-            location_id = f"/api/locations/{location_href}/"
-            location = LocationVO.objects.get(import_href=location_id)
+            location_id = content["location"]
+            location_href = f"/api/locations/{location_id}/"
+            location = LocationVO.objects.get(import_href=location_href)
             content["location"] = location
         except LocationVO.DoesNotExist:
             return JsonResponse(

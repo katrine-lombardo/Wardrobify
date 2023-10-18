@@ -12,10 +12,10 @@ class BinVO(models.Model):
 
 
 class Shoe(models.Model):
-    brand = models.CharField(max_length=150)
-    size = models.PositiveSmallIntegerField(primary_key=True)
+    manufacturer = models.CharField(max_length=150)
+    picture_url = models.URLField(null=True)
     colour = models.CharField(max_length=150)
-    style = models.CharField(max_length=150)
+    model_name = models.CharField(max_length=150)
     bin = models.ForeignKey(
         BinVO,
         related_name="shoes",

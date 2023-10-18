@@ -70,3 +70,12 @@ def api_list_hats(request, location_vo_id=None):
             encoder=HatDetailEncoder,
             safe=False,
         )
+
+
+def api_view_hat(request, pk):
+    hat = Hat.objects.get(id=pk)
+    return JsonResponse(
+        hat,
+        encoder=HatDetailEncoder,
+        safe=False,
+    )

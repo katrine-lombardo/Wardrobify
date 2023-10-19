@@ -11,9 +11,9 @@ function ShoeList() {
     }
   };
 
-  async function handleClick(e, shoeId) {
+  async function handleClick(shoeId) {
     const response = await fetch(
-      `http://localhost:8080/api/shoes/${e.shoeId}`,
+      `http://localhost:8080/api/shoes/${shoeId}`,
       {
         method: "DELETE",
       }
@@ -61,7 +61,7 @@ function ShoeList() {
               <td>{shoe.bin.closet_name}</td>
               <td>
                 <button
-                  onClick={(e) => handleClick(e, shoe.id)}
+                  onClick={() => handleClick(shoe.id)}
                   className="btn btn-danger"
                 >
                   Delete
